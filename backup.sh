@@ -42,15 +42,15 @@ cd # <-
 destDirAbsPath=`cd backups/ ; pwd`
 
 # [TASK 7]
-cd # <-
-cd # <-
+cd $origAbsPath # <-
+cd $targetDirectory # <-
 
 # [TASK 8]
-yesterdayTS=
+yesterdayTS=$(($currentTS - 24 * 60 * 60))
 
 declare -a toBackup
 
-for file in $() # [TASK 9]
+for file in $(ls) # [TASK 9]
 do
   # [TASK 10]
   if (())
