@@ -60,7 +60,9 @@ do
 done
 
 # [TASK 12]
+tar -czvf $backupFileName  $toBackup
 
 # [TASK 13]
+mv $backupFileName $destAbsPath
 
 # Congratulations! You completed the final project for this course!
