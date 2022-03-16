@@ -38,8 +38,8 @@ backupFileName="backup-$currentTS.tar.gz"
 origAbsPath=`pwd`
 
 # [TASK 6]
-cd # <-
-destDirAbsPath=`cd backups/ ; pwd`
+cd $destinationDirectory # <-
+destAbsPath=`pwd`
 
 # [TASK 7]
 cd $origAbsPath # <-
@@ -52,15 +52,19 @@ declare -a toBackup
 
 for file in $(ls) # [TASK 9]
 do
+  # echo $file, `date -r $file +%s`, $yesterdayTS
+  
   # [TASK 10]
-  if ((`date -r $file +%s` > $yesterdayTS))
+  if ((`date -r $file +%s` < $yesterdayTS))
   then
-    toBackup+=($file)  # [TASK 11]
+    toBackup+=($file)  # [TASK 11]    
   fi
 done
 
 # [TASK 12]
-tar -czvf $backupFileName  $toBackup
+tar -czvf $backupFileName ${toBackup[@]}
+
+# echo "Files to be backed up - ${toBackup[@]}"
 
 # [TASK 13]
 mv $backupFileName $destAbsPath
